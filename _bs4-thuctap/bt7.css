@@ -1,0 +1,22 @@
+*{margin: 0; padding: 0;}
+
+
+.container {
+    background-color: #325C6A;
+    color: white;
+    padding-bottom: 50px;
+    display: block;
+}
+
+.footer {
+    border-top: 1px solid #333333;
+    margin-top: 50px;
+}
+.tinduoi1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.tt1 {
+    margin-left: 80px;
+}
