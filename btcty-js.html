@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bài tập js</title>
+    <style>
+    body{
+    background-color:#00bbf3;
+    }
+    p{
+    color: rgb(9, 9, 10);
+    font-weight: 1000;
+    }
+    #panel{
+    padding: 5px;
+    text-align: center;
+    background-color: #eee2cc;
+    border: solid 1px #c3c3c3;
+    }
+
+    #panel {
+    padding: 70px;
+    display: none;
+    }
+    .content{
+    float: right;
+    }
+    .color{
+    background-color: yellowgreen;
+    border: solid 2px #242323;
+    }
+    .blue{
+    background-color: blue;
+    color: #3dd5f3;
+    }
+
+    .ancestors {
+    display: block;
+    border: 2px solid white;
+    color: white;
+    padding: 10px;
+    margin-top: 208px;
+    margin-bottom: 200px;
+    }
+
+    .ancestors-enchange  {
+    display: block;
+    border: 2px solid lightgrey;
+    color: lightgrey;
+    padding: 5px;
+    margin: 15px;
+
+    }
+
+    .descendants  {
+    display: block;
+    border: 2px solid lightgrey;
+    color: lightgrey;
+    padding: 5px;
+    margin: 15px;
+    }
+
+    #div1 {
+        background:#bf2149;height:150px;width:200px;position:absolute;
+        opacity: 1;
+
+    }
+    #div1.display{
+        opacity: 0;
+    }
+
+    #p1 {
+        opacity: 1;
+    }
+    #p1.output{
+        opacity: 0.4;
+    }
+  #test3 {
+      height: 200px;
+      width: 200px;
+      margin-top: 30px !important;
+      margin-bottom: 30px !important;
+      background-color: green;
+      color: red;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      overflow: hidden;
+
+  }
+
+   .animate {
+       animation:movement 3s forwards !important;
+   }
+   @-webkit-keyframes movement {
+       0% {transform: translateX(0px) translateY(0px);}
+       25% {transform: translateX(-100px) translateY(0px);}
+       50% {transform: translateX(-150px) translateY(-150px);}
+       80% {transform: translateX(-200px) translateY(-250px);}
+       90% {transform: translateX(-300px) translateY(-300px);}
+       100% {transform: translateX(-400px) translateY(-400px);}
+   }
+
+  #div1 {
+      animation: movement-2 3s forwards;
+  }
+
+ @-webkit-keyframes movement-2 {
+    100% {transform: translateX(0px) translateY(0px);}
+    90% {transform: translateX(-100px) translateY(0px);}
+    80% {transform: translateX(-150px) translateY(-150px);}
+    50% {transform: translateX(-200px) translateY(-250px);}
+    25% {transform: translateX(-300px) translateY(-300px);}
+    0% {transform: translateX(-400px) translateY(-400px);}
+  }
+
+  .no-animate{
+      animation: none!important;
+  }
+
+    .democlass {
+        color: pink;
+    }
+
+    .mystyle-toggle {
+        width: 300px;
+        height: 50px;
+        background-color: coral;
+        color: white;
+        font-size: 25px;
+    }
+
+    .mystyle-css {
+        width: 300px;
+        height: 200px;
+        background-color: yellow;
+        color: blue;
+    }
+
+
+    </style>
+
+
+</head>
+<body>
+
+<div class="content">
+    <h1>chào bạn mình ở đây</h1>
+    <div class="color">
+        <p id="p1">ấn vào đây để thấy điều bất ngờ</p>
+
+    </div>
+    <div id="set_csbg">
+        <p style="background-color:#ff0000">This is a paragraph.</p>
+        <p style="background-color:#00ff00">This is a paragraph.</p>
+        <p style="background-color:#0000ff">This is a paragraph.</p>
+        <p id="demo"></p>
+    </div>
+
+
+    <p id="test2">This is <span>owe mycomputer</span> another paragraph.</p>
+
+    <p>Input field: <input type="text" id="test3" value="nhấn vào đây để thay đổi giá trị"></p>
+    <p id="test">This is some <b>bold</b> đoạn văn đã thay đổi .</p>
+    <div id="panel">excue me for give me money!!!!!!!</div>
+
+    <ul id="myList">
+        <li>i need you</li>
+        <li>for give me</li>
+        <li>my very money</li>
+    </ul>
+    <div id="div1">
+        hello hoàng
+    </div>
+
+    <div id="stop_start">lại đây nào</div>
+
+
+    <h1>Hello World</h1>
+
+</div>
+<!--// ẩn điv-->
+<button id="hide">Hide</button>
+<!--hiện div-->
+<button id="show">Show</button>
+<!--làm div ẩn đi-->
+<button onclick="fadeIn()" id="fade_in">fade in</button>
+<!--làm div hiện lên-->
+<button onclick="fadeOut()" id="fade_out">fade out</button>
+<!--làm div ẩn đi hiện lên-->
+<button id="fadeToggle">fadeToggle</button>
+<!--làm div mờ theo độ mờ-->
+<button id="fadeTo">fadeTo</button>
+<br><br>
+<!--slide lên xuống-->
+<button id="slideDown" onclick="slideDown('test3');">slidedown</button>
+<!--slide lên-->
+<button id="slideUp" onclick="slideUp('test3');">slideUp</button>
+<!--slide hiện lên ẩn đi-->
+<button id="divToggle" onclick="slideToggle()">slideToggle</button>
+<!--lệnh dừng dại-->
+<button id="start">Start</button>
+<button id="stop">stop here</button>
+<button id="stop2">Stop all</button>
+
+<!--chuyển động hiệu ứng-->
+<button id="animation">Animation</button>
+<br><br>
+<!--chuyển nút click xâu chuỗi-->
+<button id="clickme">click channing</button>
+<!--hiện thị text-->
+<button id="btn1"onclick="gettext()">Show Text</button>
+<!--hiển thị html con của đoạn text-->
+<button id="btn2"onclick="getHTML()">Show HTML</button>
+<!--hiện thị giá trị của nút-->
+<button id="btn3"  onclick="getValue()">Set Value</button>
+<!--add phần tử đầu vào đầu-->
+<button id="append" onclick="append_Text()">Append text</button>
+<br></br>
+<!--add phần tử vào cuối phần tử-->
+<button id="append3" onclick="prepend_Text()">Prepended text</button>
+<!--add class vào đầu danh sách-->
+<button id="append2" onclick="append_List()">Append list items</button>
+<!--add class vào cuối danh sách phần tử-->
+<button id="append4">Prepended list items</button>
+<br></br>
+<!--di chuyển phần tử đi-->
+<button id="remove" onclick="remove()">Remove div element</button>
+<!--các lớp css jquery-->
+<br><br>
+<button  id="toggle_css" onclick="toogle_click()">Toggle class</button>
+<!--trả lại thuộc tính bg-css-->
+<button id="set_css"onclick="set_css()">Click the button to set a class for div</button>
+
+<!--dimension css-jquery-->
+<button id="display_dimension" onclick="dimension()">Display tất cả kích thước của  div</button>
+<br><br>
+
+
+
+
+
+
+
+
+<script >
+    // ẩn div bằng js
+    document.getElementById("hide").onclick = function () {
+        document.getElementById("p1").style.display = 'none';
+    };
+    // hiện hàm bằng js
+    document.getElementById("show").onclick = function () {
+        document.getElementById("p1").style.display = 'block';
+    };
+
+    // hàm fade toggle bằng javascript
+
+    var slideSource = document.getElementById('div1');
+
+    document.getElementById('fadeToggle').onclick = function () {
+        slideSource.classList.toggle('display');
+    }
+
+    var motion_fading = document.getElementById('p1');
+    document.getElementById('fadeTo').onclick = function (){
+        motion_fading.classList.add('output');
+    }
+
+
+    // hàm fade out,in js
+    var opacity =0;
+    var intervalID=0;
+    function fadeOut(){
+        intervalID=setInterval(hide,200);
+    }
+    function fadeIn(){
+        intervalID=setInterval(show,200);
+
+    }
+    function show(){
+        var div = document.getElementById('div1');
+        opacity =Number( window.getComputedStyle(div).getPropertyValue("opacity"));
+        if(opacity<1){
+            opacity = opacity+0.2;
+            div.style.opacity=opacity;
+            console.log(opacity);
+        }
+        else{
+            clearInterval(intervalID);
+        }
+    }
+
+    function hide(){
+        var div = document.getElementById('div1');
+        opacity =Number( window.getComputedStyle(div).getPropertyValue("opacity"));
+         if(opacity>0){
+             opacity = opacity-0.2;
+             div.style.opacity=opacity;
+             console.log(opacity);
+         }
+         else{
+             clearInterval(intervalID);
+         }
+    }
+
+
+    // slides toggle js
+    var slideOpen = false;
+    //var heightChecked = false;
+    var initHeight = 100;
+    var intval = null;
+
+    function slideToggle() {
+        window.clearInterval(intval);
+        var mdiv = document.getElementById('test3');
+
+
+        if(slideOpen) {
+            var slide = initHeight;
+            slideOpen = false;
+            intval = setInterval(function(){
+                    slide--;
+                    mdiv.style.height = slide + 'px';
+                    if(slide <= 0)
+                        window.clearInterval(intval);
+                }, 1
+            );
+        }
+        else {
+            var slide = 0;
+            slideOpen = true;
+            intval = setInterval(function(){
+                    slide++;
+                    mdiv.style.height = slide + 'px';
+                    if(slide >= initHeight)
+                        window.clearInterval(intval);
+                }, 1
+            );
+        }
+    }
+
+   // hàm slides down, up js
+    function slideUp(el){
+        var elem = document.getElementById(el);
+        elem.style.transition = "all 2s ease-in-out";
+        elem.style.height = "0px";
+    }
+     function slideDown(el){
+        var elem = document.getElementById(el);
+        elem.style.transition ="all 2s ease-in-out";
+        elem.style.height = "500px";
+     }
+
+
+     // hàm stop js
+
+
+    // hàm animation
+  document.addEventListener("DOMContentLoaded",function (){
+    let button = document.getElementById('animation');
+    let display = document.getElementById('div1');
+    let status = "element";
+    button.onclick = function (){
+        if(status == "element"){
+          status = "element_2";
+          display.classList.remove("no-animate");
+          display.classList.add("animate");
+        }
+        else if(status =="element_2"){
+           status = "element";
+           display.classList.remove("animate");
+
+        }
+
+    }
+
+
+  },false)
+
+    //  hàm get trong javascript
+    function gettext() {
+        alert(document.getElementById("test2").innerText);
+    }
+    function getHTML(){
+        alert(document.getElementById("test2").innerHTML);
+    }
+
+      // hàm set elem js
+    function getValue(){
+        document.getElementsByTagName("h1")[0].setAttribute("class", "democlass");
+
+    }
+    // add phan tu vao cuoi danh sách
+    function append_List() {
+        var node = document.createElement("LI");
+        var textnode = document.createTextNode("ahihhihi");
+        node.appendChild(textnode);
+        document.getElementById("myList").appendChild(node);
+    }
+    // add phần tử vào cuối phần tử text
+    function append_Text() {
+        var node = document.createElement("p");
+        var textnode = document.createTextNode("tạo ra một text mới");
+        node.appendChild(textnode);
+        document.getElementById("p1").appendChild(node);
+    }
+   // thêm phần tử vào cuối phần tử text
+    function prepend_Text() {
+        var list = document.getElementById("myList").firstChild.innerHTML;
+        document.getElementById("test").innerHTML = list;
+
+    }
+
+    // function remove
+    function remove() {
+        var myobj = document.getElementById("p1");
+        myobj.remove();
+    }
+
+    // toggle add class css
+
+    function toogle_click()  {
+        document.getElementById("myList").classList.toggle("mystyle-toggle");
+    }
+
+     //  sét classs css
+    function set_css() {
+        document.getElementById("set_csbg").className = "mystyle-css";
+    }
+
+      // return kích thước css
+    function dimension() {
+        var elmnt = document.getElementById("set_csbg");
+        var txt = "";
+        txt += "Height including padding: " + elmnt.clientHeight + "px<br>";
+        txt += "Height including padding and border: " + elmnt.offsetHeight + "px<br>";
+        txt += "Width including padding: " + elmnt.clientWidth + "px<br>";
+        txt += "Width including padding and border: " + elmnt.offsetWidth + "px";
+        document.getElementById("demo").innerHTML = txt;
+    }
+
+
+
+
+</script>
+</body>
+</html>
