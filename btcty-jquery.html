@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        body{
+            background-color:pink;
+        }
+        p{
+            color: rgb(9, 9, 10);
+            font-weight: 1000;
+        }
+        #panel{
+            padding: 5px;
+            text-align: center;
+            background-color: #eee2cc;
+            border: solid 1px #c3c3c3;
+        }
+
+        #panel {
+            padding: 70px;
+            display: none;
+        }
+        .content{
+            float: right;
+        }
+        .color{
+            background-color: yellowgreen;
+            border: solid 2px #242323;
+        }
+        .blue{
+            background-color: blue;
+            color: #3dd5f3;
+        }
+
+        .ancestors {
+            display: block;
+            border: 2px solid white;
+            color: white;
+            padding: 10px;
+            margin-top: 208px;
+            margin-bottom: 200px;
+        }
+
+        .ancestors-enchange  {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+
+        }
+
+        .descendants  {
+            display: block;
+            border: 2px solid lightgrey;
+            color: lightgrey;
+            padding: 5px;
+            margin: 15px;
+        }
+
+    </style>
+
+
+</head>
+<body>
+<div class="content">
+    <p>chào bạn mình ở đây</p>
+
+
+    <div class="color">
+        <p id="p1">ấn vào đây để thấy điều bất ngờ</p>
+    </div>
+    <p id="test2">This is another paragraph.</p>
+
+    <p>Input field: <input type="text" id="test3" value="nhấn vào đây để thay đổi giá trị"></p>
+    <p id="test">This is some <b>bold</b> đoạn văn đã thay đổi .</p>
+    <div id="panel">excue me for give me money!!!!!!!</div>
+
+    <ul>
+        <li>i need you</li>
+        <li>for give me</li>
+
+        <li>my very money</li>
+    </ul>
+    <div id="div1" style="background:#bf2149;height:150px;width:200px;position:absolute;">
+        hello hoàng đi
+    </div>
+
+    <div class="stop_start" style="margin-top: 200px; background:#98bf21;height:100px;width:200px;position:absolute;">HELLO</div>
+
+
+
+
+</div>
+<!--// ẩn điv-->
+<button id="hide">Hide</button>
+<!--hiện div-->
+<button id="show">Show</button>
+<!--làm div ẩn đi-->
+<button id="fade_in">fade in</button>
+<!--làm div hiện lên-->
+<button id="fade_out">fade out</button>
+<!--làm div ẩn đi hiện lên-->
+<button id="fadeToggle">fadeToggle</button>
+<!--làm div mờ theo độ mờ-->
+<button id="fadeTo">fadeTo</button>
+<br><br>
+<!--slide lên xuống-->
+<button id="slideDown">slidedown</button>
+<!--slide lên-->
+<button id="slideUp">slideUp</button>
+<!--slide hiện lên ẩn đi-->
+<button id="slideToggle">slideToggle</button>
+<!--lệnh dừng dại-->
+<button id="start">Start</button>
+<button id="stop">stop here</button>
+<button id="stop2">Stop all</button>
+
+<!--chuyển động hiệu ứng-->
+<button id="animate">Animation</button>
+<br><br>
+<!--chuyển nút click xâu chuỗi-->
+<button id="clickme">click channing</button>
+<!--hiện thị text-->
+<button id="btn1" onclick="gettext()">Show Text</button>
+<!--hiển thị html con của đoạn text-->
+<button id="btn2">Show HTML</button>
+<!--hiện thị giá trị của nút-->
+<button id="btn3">Set Value</button>
+<!--add phần tử đầu vào đầu-->
+<button id="append">Append text</button>
+<br></br>
+<!--add phần tử vào cuối phần tử-->
+<button id="append3">Prepended text</button>
+<!--add class vào đầu danh sách-->
+<button id="append2">Append list items</button>
+<!--add class vào cuối danh sách phần tử-->
+<button id="append4">Prepended list items</button>
+<br></br>
+<!--di chuyển phần tử đi-->
+<button id="remove">Remove div element</button>
+<!--các lớp css jquery-->
+<br><br>
+<button  id="toggle_css">Toggle class</button>
+<!--trả lại thuộc tính bg-css-->
+<button id="return_bgCss">Set background-color of p</button>
+
+<!--dimension css-jquery-->
+<button id="display_dimension">Display tất cả kích thước của  div</button>
+<br><br>
+
+
+
+<!--phần làm của âjax-->
+
+<button>gửi dữ liệu và nhận dữ liệu</button>
+
+<button>Send an HTTP POST request to a page and get the result back</button>
+
+<script>
+    // <!--// ẩn điv hiện div-->
+    $(document).ready(function(){
+        $("#hide").click(function(){
+            $("p").hide(600);
+        });
+        $("#show").click(function(){
+            $("p").show(600);
+        });
+
+        <!--làm div ẩn đi-->
+        $("#fade_in").click(function(){
+            $("#div1").fadeIn(600);
+        });
+
+        <!--làm div hiện lên-->
+        $("#fade_out").click(function(){
+            $("#div1").fadeOut(600);
+        });
+
+        <!--lệnh làm div ẩn đi hiện lên-->
+        $("#fadeToggle").click(function(){
+            $("#div1").fadeToggle(600);
+        });
+
+           // làm div mờ đi
+        $("#fadeTo").click(function(){
+            $("#div1").fadeTo("slow", 0.15);
+        });
+           // làm cho div slides xuống
+        $("#slideDown").click(function(){
+            $("#panel").slideDown(3000);
+        });
+
+        // làm slides hiện lên
+        $("#slideUp").click(function(){
+            $("#panel").slideUp(3000);
+        });
+
+          // làm slides ẩn đi hiện lên
+        $("#slideToggle").click(function(){
+            $("#panel").slideToggle(3000);
+        });
+
+           // làm div dừng lại hàm stop
+        $(document).ready(function(){
+            $("#start").click(function(){
+                $(".stop_start").animate({left: '100px'}, 5000);
+                $(".stop_start").animate({fontSize: '3em'}, 5000);
+                $(".stop_start").animate({left: '1000px'}, 5000);
+            });
+
+            $("#stop").click(function(){
+                $(".stop_start").stop();
+            });
+
+            $("#stop2").click(function(){
+                $(".stop_start").stop(true);
+            });
+
+            $("#stop3").click(function(){
+                $(".stop_start").stop(true, true);
+            });
+        });
+
+
+
+          // hoạt ảnh chuyển động
+        $("#animate").click(function(){
+            var div = $("#div1");
+            div.animate({left: '300px'}, "slow");
+            div.animate({height: '300px',fontSize: '3em', opacity: '0.4'}, "slow");
+            div.animate({width: '300px', opacity: '0.8'}, "slow");
+            div.animate({height: '100px',fontSize: '2em', opacity: '0.6'}, "slow");
+            div.animate({width: '250px',fontSize: '3em', opacity: '0.8'}, "slow");
+            div.animate({width: '150px',fontSize: '2em', opacity: '0.8'}, "slow");
+            div.animate({fontSize: '1em'}, "slow");
+            div.animate({left: '1000px'}, "slow");
+
+
+        });
+
+        //
+        // $("#animate").click(function(){
+        //     $("#p1").animate('slow',function(){
+        //         alert("click vào đây để bạn thấy suprise");
+        //     });
+        // });
+
+
+        $("#btn1").click(function(){
+            alert("Text: " + $("#test").text());
+        });
+        $("#btn2").click(function(){
+            alert("HTML: " + $("#test").html());
+        });
+
+
+        $("#clickme").click(function(){
+            $("#p1").slideUp(2000).slideDown(2000)
+        })
+
+
+        $("#btn1").click(function(){
+            $("#p1").text("Hello world!");
+        });
+        $("#btn2").click(function(){
+            $("#test2").html("<b>Hello world!</b>");
+        });
+        $("#btn3").click(function(){
+            $("#test3").val("chào anh e đứng đây từ chiều");
+        });
+        $("#append").click(function(){
+            $("p").append(" <b>thêm vào cuối</b>.");
+        });
+        $("#append3").click(function(){
+            $("p").prepend("<b>thêm vào đầu</b>. ");
+        });
+        $("#append2").click(function(){
+            $("ul").append("<li>thêm vào dưới</li>");
+        });
+        $("#append4").click(function(){
+            $("ul").prepend("<li>thêm vào trên</li>");
+        });
+        $("#remove").click(function(){
+            $("ul").remove();
+        });
+
+        $(document).ready(function(){
+            $("#toggle_css").click(function(){
+                $("ul").toggleClass("blue");
+            });
+        });
+
+        $(document).ready(function(){
+            $("#return_bgCss").click(function(){
+                alert("Background color = " + $("ul").css("background-color"));
+            });
+        });
+
+        // dimension-css-jquery
+        $(document).ready(function(){
+            $("#display_dimension").click(function(){
+                var txt = "";
+                txt += "Width of div: " + $("#div1").width() + "</br>";
+                txt += "Height of div: " + $("#div1").height();
+                $("#div1").html(txt);
+            });
+        });
+
+      // phần âjax
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.get("demo_test.asp", function(data, status){
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
+            });
+        });
+
+          // phần post ajaxx
+        $(document).ready(function(){
+            $("button").click(function(){
+                $.post("demo_test_post.asp",
+                    {
+                        name: "Donald Duck",
+                        city: "Duckburg"
+                    },
+                    function(data,status){
+                        alert("Data: " + data + "\nStatus: " + status);
+                    });
+            });
+        });
+
+    });
+</script>
+</body>
+</html>
